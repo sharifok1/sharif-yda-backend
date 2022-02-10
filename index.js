@@ -91,6 +91,15 @@ app.post('/servedStudent', async(req,res)=>{
   res.send(result);
   console.log(result);
 })
+//served api search----------------------------------search
+app.get('/findServed',async(req,res)=>{
+  const roll = req.query.roll;
+  const query = {roll:roll};
+  const student = servedStudentDataCollection.find(query);
+  const result = await student.toArray();
+  res.send(result);
+  console.log(result);
+})
 
 // get all serve and --------------------------------------server--none serve students//
 app.get('/servedStudent', async(req, res)=>{
@@ -98,7 +107,7 @@ app.get('/servedStudent', async(req, res)=>{
   const shift = req.query.shift;
   const roll = req.query.roll;
   const query = {roll:roll};
-  const servedStudent = servedStudentDataCollection.find();
+  const servedStudent = servedStudentDataCollection.find(query);
   const currentPage = req.query.currentPage;
   const size = parseInt(req.query.size);
   let result;
