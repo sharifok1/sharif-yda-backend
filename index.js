@@ -107,7 +107,7 @@ app.get('/servedStudent', async(req, res)=>{
   const shift = req.query.shift;
   const roll = req.query.roll;
   const query = {roll:roll};
-  const servedStudent = servedStudentDataCollection.find(query);
+  const servedStudent = servedStudentDataCollection.find();
   const currentPage = req.query.currentPage;
   const size = parseInt(req.query.size);
   let result;
